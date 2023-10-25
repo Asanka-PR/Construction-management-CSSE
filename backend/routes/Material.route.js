@@ -6,7 +6,8 @@ const {
   getMaterials,
   getMaterial,
   updateMaterial,
-  removeMaterial
+  removeMaterial,
+  searchMaterial
 } = require("../controllers/Material.controller");
 
 router.post("/", addMaterial);
@@ -19,6 +20,8 @@ router.put("/:id", updateMaterial);
 
 router.delete("/:id", removeMaterial);
 
+
+router.get("/search/:key",searchMaterial);
 
 
 module.exports = router;

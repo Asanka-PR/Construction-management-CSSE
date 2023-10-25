@@ -3,11 +3,11 @@ const orderService = require("../services/OrderService");
 
 
 const addOrder = (req, res) => {
-  const {orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress } = req.body;
+  const {orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress,reason } = req.body;
 
   
 
-  orderService.addOrder({orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress })
+  orderService.addOrder({orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress,reason })
   .then((createOrder) => {
       res.json(createOrder);
     })
@@ -42,10 +42,10 @@ const getOrder = (req, res) => {
 
 const updateOrder = (req, res) => {
     const oId = req.params.id;
-    const {orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress } = req.body;
+    const {orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress,reason } = req.body;
 
   orderService
-    .updateOrder(oId, {orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress})
+    .updateOrder(oId, {orderNo,site, material, materialPrice,quantity, siteManagerName,totalPrice,approvalStates,deliveryAddress,reason})
     .then((updateOr) => {
       res.status(200).json(updateOr);
     })
@@ -67,6 +67,47 @@ const removeOrder = (req, res) => {
     });
 };
 
+const getPendingOrders = (req, res) => {
+  orderService
+    .getPendingOrders()
+    .then((pendingOrders) => {
+      res.json(pendingOrders);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
+};
+const getRejectOrders = (req, res) => {
+  orderService
+    .getRejectOrders()
+    .then((pendingOrders) => {
+      res.json(pendingOrders);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
+};
+const getDeliveryOrders = (req, res) => {
+  orderService
+    .getDeliveryOrders()
+    .then((pendingOrders) => {
+      res.json(pendingOrders);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
+};
+
+const getDeliveryRejectOrders = (req, res) => {
+  orderService
+    .getDeliveryRejectOrders()
+    .then((pendingOrders) => {
+      res.json(pendingOrders);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
+};
 
 
 
@@ -76,6 +117,10 @@ module.exports = {
   addOrder,
   getOrders,
   getOrder,
+  getRejectOrders,
+  getDeliveryRejectOrders,
+  getPendingOrders,
+  getDeliveryOrders,
   updateOrder,
   removeOrder,
 };

@@ -3,6 +3,8 @@ const supplierService = require("../services/SupplierService");
 
 
 const addSupplier = (req, res) => {
+
+  
   const {supplierId,companyName, name, address,suppliedMaterialInfo, phone, email, password } = req.body;
 
   

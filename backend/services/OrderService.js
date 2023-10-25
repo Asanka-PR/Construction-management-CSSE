@@ -59,7 +59,38 @@ class OrderService {
     }
   }
 
- 
+  async getPendingOrders() {
+    try {
+      const pendingOrders = await Order.find({ approvalStates: 'pending' });
+      return pendingOrders;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getRejectOrders() {
+    try {
+      const RejectOrders = await Order.find({ approvalStates: 'rejected' });
+      return RejectOrders;
+    } catch (error) {
+      throw error;
+    }
+  } 
+  async getDeliveryOrders() {
+    try {
+      const DeliveryOrders = await Order.find({ approvalStates: 'delivery' });
+      return DeliveryOrders;
+    } catch (error) {
+      throw error;
+    }
+  } 
+  async getDeliveryRejectedOrders() {
+    try {
+      const DeliverRejectedOrders = await Order.find({ approvalStates: 'deliveryreject' });
+      return DeliverRejectedOrders;
+    } catch (error) {
+      throw error;
+    }
+  } 
 }
 
 module.exports = new OrderService();

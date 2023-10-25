@@ -9,7 +9,7 @@ const UserLayout = ({ children ,name}) => {
 
     return (
       <>
-         <Box sx={{ display: 'flex' ,backgroundColor:"white"}}>
+         <Box sx={{ display: 'flex' ,backgroundColor:"#EDF0F7"}}>
 
           <ResponsiveDrawer name={name}></ResponsiveDrawer>
           {children}
