@@ -11,7 +11,8 @@ const orderSchema = new Schema({
   siteManagerName:String,
   totalPrice:String,
   approvalStates:String,
-  deliveryAddress:String
+  deliveryAddress:String,
+  reason:String,
 
 });
 

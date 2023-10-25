@@ -24,6 +24,8 @@ import { Tabs, Tab } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import HistoryIcon from '@mui/icons-material/History';
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -40,7 +42,7 @@ function ResponsiveDrawer(props, { children }) {
     {
       text: "Dashboard",
       icon: <HomeOutlinedIcon />,
-      path: "/dashboard",
+      path: "/order",
     },
     {
       text: "Order Request",
@@ -48,19 +50,24 @@ function ResponsiveDrawer(props, { children }) {
       path: "/order",
     },
     {
+      text: "Order History",
+      icon: <HistoryIcon />,
+      path: "/orderhistory",
+    },
+    {
       text: "Site Details",
       icon: <NearMeOutlinedIcon />,
-      path: "/site",
+      path: "/order",
     },
     {
       text: "Staff Members",
       icon: <RestoreOutlinedIcon />,
-      path: "/member",
+      path: "/order",
     },
     {
       text: "Suppliers",
       icon: <AirportShuttleIcon />,
-      path: "/supplier",
+      path: "/viewsupplier",
     },
     {
       text: "Materials",
@@ -71,14 +78,14 @@ function ResponsiveDrawer(props, { children }) {
     {
       text: "Sign Out",
       icon: <Person2OutlinedIcon />,
-      path: "/signout",
+      path: "/",
     },
   ];
 
   const drawer = (
     <div>
       <Toolbar>
-        <h4 style={{ color: "white" }}>Procument Department</h4>
+        <h6 style={{ color: "white" }}>Procument Department</h6>
       </Toolbar>
       <List
         sx={{
@@ -87,10 +94,12 @@ function ResponsiveDrawer(props, { children }) {
       >
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
+            <Link to={item.path}>
             <ListItemButton>
               <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
               <ListItemText sx={{ color: "white" }} primary={item.text} />
             </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
